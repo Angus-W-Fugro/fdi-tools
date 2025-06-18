@@ -1,0 +1,34 @@
+﻿<Window x:Class="FDITools.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FDITools"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <TabControl>
+        <TabItem Header="Pipeline Stats">
+            <DataGrid ItemsSource="{Binding PipelineStats}" />
+        </TabItem>
+        
+        <TabItem Header="FLF Viewer">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <UniformGrid Grid.Column="0" VerticalAlignment="Top" Columns="1">
+                    <Button Content="Start" Command="{Binding RunCommand}" Margin="0,0,8,8" />
+                    <TextBlock Text="Route points:" Margin="0,0,8,8" />
+                    <TextBlock Text="{Binding NumRoutePoints}" Margin="0,0,8,8" />
+                    <TextBlock Text="Route points:" Margin="0,0,8,8" />
+                    <TextBlock Text="{Binding NumNavigationPoints}" Margin="0,0,8,8" />
+                </UniformGrid>
+
+                <WpfPlot x:Name="WpfPlot" Grid.Column="1" />
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
